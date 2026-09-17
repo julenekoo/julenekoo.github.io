@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio de desarrollo · Juegos en Godot y proyectos web</title>
-<meta name="description" content="Portfolio de desarrollo: siete juegos en Godot 4 y cuatro proyectos web. 267.962 lineas de codigo propio, 3.656 comprobaciones automaticas, y el estado de cada proyecto medido y documentado.">
+<meta name="description" content="Portfolio de desarrollo: siete juegos en Godot 4 y cuatro proyectos web. 267.962 lineas de codigo propio, 3.895 comprobaciones automaticas, y el estado de cada proyecto medido y documentado.">
 <style>
   :root{
     --fondo:#0e1014; --fondo2:#151922; --linea:#242b38;
@@ -145,7 +145,7 @@
 
     <div class="cifras">
       <div class="cifra"><b>267.962</b><span>líneas de código propio</span></div>
-      <div class="cifra"><b>3.656</b><span>comprobaciones automáticas</span></div>
+      <div class="cifra"><b>3.895</b><span>comprobaciones automáticas</span></div>
       <div class="cifra"><b>419</b><span>commits de historial</span></div>
       <div class="cifra"><b>11</b><span>proyectos</span></div>
     </div>
@@ -183,9 +183,11 @@
       <div class="regla">
         <h3>Las pruebas son red, no decoración</h3>
         <p>
-          3.656 comprobaciones automáticas que corren sin editor y sin render, con un
-          arnés por proyecto. También se anota lo que se decidió <em>no</em> hacer y
-          los falsos positivos, porque han costado tiempo más de una vez.
+          3.895 comprobaciones que corren sin editor y sin render. Con matiz, porque
+          es lo honesto: <strong>cuatro de los siete juegos tienen arnés</strong> y
+          los otros tres no, y sus README lo dicen en la primera pantalla en vez de
+          esconderlo. También se anota lo que se decidió <em>no</em> hacer y los
+          falsos positivos, porque han costado tiempo más de una vez.
         </p>
         <cite>«Verificar ejecutando, nunca por código de salida: un Parse Error sale con EXIT 0.»</cite>
       </div>
@@ -261,7 +263,7 @@
           </div>
           <div class="datos">
             <span><b>49.533</b> líneas</span>
-            <span><b>981</b> comprobaciones</span>
+            <span><b>993</b> comprobaciones</span>
             <span><b>105</b> commits</span>
             <span>Godot 4.7</span>
           </div>
@@ -276,10 +278,17 @@
           <h3>HungerBorn</h3>
           <p class="pitch">
             Juego de mazmorra con combate, evoluciones y progresión, con arte propio y
-            una web de presentación. Localizado a <strong>siete idiomas</strong>,
-            incluidos chino, ruso y japonés: no solo la interfaz, también los nombres
-            de evolución y la prosa de combate, con una auditoría dedicada a cazar el
-            texto que nunca llegaba a las tablas de idioma.
+            una web de presentación. Localizado a <strong>doce idiomas</strong>,
+            incluidos chino, ruso, japonés y coreano.
+          </p>
+          <p class="pitch">
+            Y no solo la interfaz: son 256 claves de rótulos por un lado y
+            <strong>3.609 de prosa de combate</strong> por otro, en tablas separadas
+            porque son dos problemas distintos —256 rótulos se revisan de un vistazo y
+            1.852 frases no—. Hizo falta una auditoría dedicada a cazar el texto que
+            nunca llegaba a las tablas: cadenas construidas en código que el envoltorio
+            de traducción no podía ver, y que salían en inglés en las doce versiones sin
+            que nada fallara.
           </p>
           <div class="estado">
             <b>Jugable, con localización completa.</b> El proyecto estuvo meses sin
@@ -288,7 +297,7 @@
           </div>
           <div class="datos">
             <span><b>49.346</b> líneas</span>
-            <span><b>7</b> idiomas</span>
+            <span><b>12</b> idiomas</span>
             <span>Godot 4</span>
           </div>
         </div>
@@ -378,13 +387,16 @@
             contenido en dos sitios solo garantizaba desincronizarlo.
           </p>
           <div class="estado aviso">
-            <b>Jugable de principio a fin y exportado a Windows</b>, pero con cuatro
-            fallos confirmados y una veintena sin verificar, todos listados en
-            DEFECTOS.md. Nadie lo ha jugado con las manos: lo que se sabe de él viene
-            de bots y de capturas.
+            <b>Jugable de principio a fin y exportado a Windows</b>, con integración de
+            Steam y la lista de defectos a cero: salió de una revisión adversarial
+            multi-agente que propuso 33 fallos, y los veintidós que quedaron sin
+            verificar se triaron a mano uno por uno. Lo único abierto es que
+            <b>nadie lo ha jugado con las manos todavía</b>: lo que se sabe viene de
+            bots, del banco de 500 partidas y de capturas.
           </div>
           <div class="datos">
             <span><b>21.309</b> líneas</span>
+            <span>banco de <b>500</b> partidas</span>
             <span>contenido en JSON</span>
             <span>Godot 4.7</span>
           </div>
