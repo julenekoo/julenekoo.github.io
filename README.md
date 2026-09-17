@@ -19,7 +19,7 @@ publicos, asi que el escaparate vive aparte y el codigo se queda privado.
 ## Las cifras
 
 Las cifras del escaparate estan medidas sobre el codigo, no estimadas:
-267.962 lineas propias, 3.656 comprobaciones automaticas y 419 commits de
+267.962 lineas de codigo, 3.895 comprobaciones automaticas y 429 commits de
 historial entre los once proyectos. Si cambian los proyectos, hay que volver a
 medirlas antes de tocar el numero.
 

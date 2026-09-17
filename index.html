@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio de desarrollo · Juegos en Godot y proyectos web</title>
-<meta name="description" content="Portfolio de desarrollo: siete juegos en Godot 4 y cuatro proyectos web. 267.962 lineas de codigo propio, 3.895 comprobaciones automaticas (2.282 verificadas ejecutando los arneses), y el estado de cada proyecto medido y documentado.">
+<meta name="description" content="Portfolio de desarrollo: siete juegos en Godot 4 y cuatro proyectos web, escritos con IA y con la co-autoria declarada en 403 de 429 commits. 267.962 lineas de codigo, 3.895 comprobaciones automaticas (2.282 verificadas ejecutando los arneses), y el estado real de cada proyecto por escrito.">
 <style>
   :root{
     --fondo:#0e1014; --fondo2:#151922; --linea:#242b38;
@@ -20,6 +20,7 @@
     font:16px/1.65 var(--sans); -webkit-font-smoothing:antialiased;
   }
   .env{max-width:var(--max); margin:0 auto; padding:0 24px}
+  code{font-family:ui-monospace,Consolas,monospace; font-size:.92em; background:#0e1319; border:1px solid var(--linea); border-radius:5px; padding:1px 6px}
   a{color:var(--acento2); text-decoration:none}
   a:hover{text-decoration:underline}
   h1,h2,h3{line-height:1.2; margin:0; font-weight:650; letter-spacing:-.02em}
@@ -137,20 +138,81 @@
     <div class="rotulo">Desarrollo de juegos y web</div>
     <h1>Once proyectos, y el estado real de cada uno por escrito.</h1>
     <p class="entradilla">
-      Siete juegos en Godot 4 y cuatro proyectos web, construidos en solitario.
-      Lo que distingue a este portfolio no es el volumen: es que
-      <strong>cada hito está medido antes de darse por bueno</strong>, y que
-      cuando algo no está probado, el propio repositorio lo dice.
+      Siete juegos en Godot 4 y cuatro proyectos web, <strong>escritos con
+      IA</strong>. Lo que distingue a este portfolio no es el volumen: es que
+      cada hito está medido antes de darse por bueno, y que cuando algo no
+      está probado, el propio repositorio lo dice.
     </p>
 
     <div class="cifras">
-      <div class="cifra"><b>267.962</b><span>líneas de código propio</span></div>
+      <div class="cifra"><b>267.962</b><span>líneas de código</span></div>
       <div class="cifra"><b>3.895</b><span>comprobaciones automáticas</span></div>
-      <div class="cifra"><b>419</b><span>commits de historial</span></div>
-      <div class="cifra"><b>11</b><span>proyectos</span></div>
+      <div class="cifra"><b>429</b><span>commits de historial</span></div>
+      <div class="cifra"><b>403</b><span>con co-autoría de IA declarada</span></div>
     </div>
   </div>
 </header>
+
+<section>
+  <div class="env">
+    <div class="tit">Cómo están hechos</div>
+    <h2>Escritos con IA, y el historial lo dice desde el primer commit</h2>
+    <p class="sub">
+      El código de estos once proyectos se ha escrito con IA, con Claude Code.
+      <strong>403 de los 429 commits llevan la co-autoría declarada en el propio
+      mensaje</strong>, y en CovetBorn hay diez que tienen a la IA directamente
+      como autora. No está escondido y nunca lo ha estado: hay un
+      <code>CLAUDE.md</code> en el repositorio de Veta Serena, y los documentos
+      de estado de HungerBorn y We Need Millions están escritos como traspaso
+      entre sesiones.
+    </p>
+    <p class="sub">
+      Lo pongo arriba y no al final porque un portfolio que dice contar el estado
+      real no puede omitir cómo se hizo el trabajo. Los documentos de diseño son
+      míos —dieciocho en CovetBorn, dieciséis en La ciudad en una maleta, escritos
+      antes del código y mandando sobre él—, igual que las decisiones de rumbo y la
+      disciplina de medir. El código, en su mayor parte, no.
+    </p>
+    <p class="sub">
+      Y esa disciplina no es una pose: está ahí porque hacía falta.
+      <strong>La IA produce código plausible muy rápido, y plausible no es lo mismo
+      que correcto.</strong> Estos tres casos están documentados en sus repositorios
+      y son la razón de que haya un diario de medidas en cada proyecto.
+    </p>
+
+    <div class="metodo">
+      <div class="regla">
+        <h3>El simulador se saboteaba a sí mismo</h3>
+        <p>
+          El jugador automático de <em>La ciudad en una maleta</em> desmontaba un
+          edificio propio antes de comprobar que la pieza entrante cabía en el hueco
+          —área no es forma—, y cuando no cabía lo había perdido igual y encima no
+          apuntaba la amputación. <strong>298 veces en 200 partidas.</strong>
+        </p>
+        <cite>Tres tandas de medidas se habían tomado sobre eso. El juego era más fácil de lo que decían: 66 % llegan al refugio, no 57 %.</cite>
+      </div>
+      <div class="regla">
+        <h3>Las cifras de fps no medían nada</h3>
+        <p>
+          En <em>Veta Serena</em> se citaban fps medidos con vsync puesto. «144 fps»
+          no era el juego: era el monitor. Se vio en cuanto hizo falta saber lo que
+          costaba algo — el sol del corral salía a 144 con sombras y a 144 sin ellas.
+        </p>
+        <cite>Ahora el modo captura apaga el vsync a propósito, porque existe justo para medir.</cite>
+      </div>
+      <div class="regla">
+        <h3>La revisión adversarial se quedó a medias</h3>
+        <p>
+          Una revisión multi-agente sobre <em>Just One More Door</em> propuso 33
+          defectos, pero el límite de sesión <strong>mató a 77 de los 105
+          agentes</strong>, así que la mayoría quedó sin verificar. Eso es peor que
+          refutado: significa no saber cuáles son reales.
+        </p>
+        <cite>Se triaron los veintidós a mano, uno por uno. Veintiuno eran ciertos.</cite>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="env">
@@ -279,7 +341,7 @@
         <div class="txt">
           <h3>HungerBorn</h3>
           <p class="pitch">
-            Juego de mazmorra con combate, evoluciones y progresión, con arte propio y
+            Juego de mazmorra con combate, evoluciones y progresión, con arte generado con IA a partir de prompts propios y
             una web de presentación. Localizado a <strong>doce idiomas</strong>,
             incluidos chino, ruso, japonés y coreano.
           </p>
