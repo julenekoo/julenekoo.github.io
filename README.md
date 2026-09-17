@@ -1,7 +1,7 @@
 # Escaparate del portfolio
 
 La web publica que presenta los once proyectos. Se sirve con GitHub Pages en
-https://juleneko.github.io
+https://julenekoo.github.io
 
 **Este repositorio es el unico publico.** Los once repositorios de codigo son
 privados; aqui solo hay el HTML del escaparate, las capturas y los textos. Por
