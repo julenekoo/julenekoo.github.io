@@ -80,14 +80,67 @@
   .proy .txt{padding:32px}
   .proy .shot{
     position:relative; background:#07090c; border-left:1px solid var(--linea);
-    min-height:300px; overflow:hidden;
+    min-height:340px; overflow:hidden;
   }
   .proy .shot img{
     position:absolute; inset:0; width:100%; height:100%; max-width:100%;
     object-fit:cover; object-position:center; display:block;
-    opacity:0; transition:opacity .35s ease;
+    opacity:0; transition:opacity .35s ease; cursor:zoom-in;
   }
   .proy .shot img.activa{opacity:1}
+  /* Las capturas de web son paginas altas: se encuadran por arriba, que es
+     donde esta la cabecera y el reclamo, en vez de por el centro. */
+  .proy .shot.arriba img{object-position:top center}
+
+  .shot .lupa{
+    position:absolute; top:12px; right:12px; z-index:2;
+    padding:5px 11px; border-radius:99px; font-size:.72rem; letter-spacing:.04em;
+    border:1px solid rgba(255,255,255,.22); background:rgba(10,13,18,.72);
+    color:#fff; cursor:zoom-in; backdrop-filter:blur(3px);
+    opacity:0; transition:opacity .2s;
+  }
+  .shot:hover .lupa, .shot:focus-within .lupa{opacity:1}
+  .shot .lupa:hover{background:rgba(224,164,88,.9); color:#17120a; border-color:transparent}
+
+  /* ---------- visor a pantalla completa ---------- */
+  .visor{
+    position:fixed; inset:0; z-index:99; display:none;
+    background:rgba(6,8,11,.94); backdrop-filter:blur(6px);
+  }
+  .visor.abierto{display:block}
+  .visor img{
+    position:absolute; inset:56px 64px 112px;
+    width:calc(100% - 128px); height:calc(100% - 168px);
+    object-fit:contain; object-position:center;
+  }
+  .visor .cerrar{
+    position:absolute; top:14px; right:18px; z-index:2;
+    width:40px; height:40px; border-radius:50%; cursor:pointer;
+    border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.06);
+    color:#fff; font-size:1.3rem; line-height:1; display:grid; place-items:center;
+  }
+  .visor .cerrar:hover{background:var(--acento); color:#17120a; border-color:transparent}
+  .visor .flecha{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:46px; height:46px; border-radius:50%; cursor:pointer; opacity:1;
+    border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.06);
+    color:#fff; font-size:1.4rem; line-height:1; display:grid; place-items:center;
+  }
+  .visor .flecha:hover{background:var(--acento); color:#17120a; border-color:transparent}
+  .visor .flecha.atras{left:14px}
+  .visor .flecha.delante{right:14px}
+  .visor .rotulo-visor{
+    position:absolute; left:50%; transform:translateX(-50%); bottom:22px; z-index:2;
+    text-align:center; font-size:.86rem; line-height:1.45; color:var(--suave);
+    padding:0 20px; max-width:74ch; width:100%;
+  }
+  .visor .rotulo-visor b{display:block; color:var(--texto); font-weight:600; margin-bottom:3px}
+  body.con-visor{overflow:hidden}
+  @media (max-width:820px){
+    .visor img{inset:52px 12px 124px; width:calc(100% - 24px); height:calc(100% - 176px)}
+    .visor .rotulo-visor{bottom:16px}
+    .visor .flecha{width:38px; height:38px}
+  }
 
   /* Flechas y puntos: solo aparecen si hay mas de una imagen. */
   .shot .flecha{
@@ -582,7 +635,7 @@
             <span><b>0</b> dependencias</span>
           </div>
         </div>
-        <div class="shot" data-carrusel>
+        <div class="shot arriba" data-carrusel>
           <img src="img/web-muestrario-1-indice.png" loading="lazy" alt="Indice del muestrario: el titular Veintiuna webs de ejemplo de minimas a complejas, con cuatro cifras y filtros por sector y complejidad" data-pie="El indice: filtra por sector y por complejidad, y cuenta lo que hay sin adornarlo.">
           <img src="img/web-muestrario-2-nova.png" loading="lazy" alt="NOVA, farmacia online: cabecera clara con catalogo, filtros por categoria, cesta y tarjetas de servicio" data-pie="NOVA, farmacia online. El extremo complejo: catalogo con filtros, cesta y fichas de producto.">
           <img src="img/web-muestrario-3-blanc.png" loading="lazy" alt="BLANC, estetica dental: fondo negro con tipografia serif elegante y el titular La sonrisa que ya tenias" data-pie="BLANC, estetica dental. Serif elegante sobre negro y una promesa que no promete dientes nuevos.">
@@ -617,7 +670,7 @@
             <span><b>0</b> dependencias</span>
           </div>
         </div>
-        <div class="shot" data-carrusel>
+        <div class="shot arriba" data-carrusel>
           <img src="img/web-fuse-1.png" loading="lazy" alt="Portada de FUSE: el rotulo FUSE enorme en blanco sobre una botella iluminada en naranja, con navegacion, selector de idioma y una banda de reclamos abajo" data-pie="La portada: la tipografia atravesando la botella, y la banda de reclamos corriendo por abajo.">
         </div>
       </article>
@@ -646,7 +699,7 @@
             <span>tablet y móvil</span>
           </div>
         </div>
-        <div class="shot" data-carrusel>
+        <div class="shot arriba" data-carrusel>
           <img src="img/web-boca-1.png" loading="lazy" alt="Editor del plano de sala de Boca Pizza, vacio: los tres tipos de mesa arriba y la rejilla del plano debajo" data-pie="El editor del plano, sin datos: se mantiene pulsado un tipo de mesa, se desliza para elegir el aforo y se suelta.">
         </div>
       </article>
@@ -675,7 +728,7 @@
             <span><b>0</b> dependencias</span>
           </div>
         </div>
-        <div class="shot" data-carrusel>
+        <div class="shot arriba" data-carrusel>
           <img src="img/web-door-1.png" loading="lazy" alt="Portada del prototipo web: una figura de palo junto a una puerta dibujada a mano sobre papel cuadriculado, el rotulo del juego y el boton BAJAR" data-pie="La portada del prototipo. Todo el dibujo se genera en el navegador, sin una sola imagen.">
         </div>
       </article>
@@ -711,71 +764,189 @@
 </footer>
 
 <script>
-// Carrusel minimo, sin dependencias. Un bloque con una sola imagen no pinta
-// controles: no hay nada entre lo que pasar.
-document.querySelectorAll('[data-carrusel]').forEach(function (caja) {
-  var imgs = Array.prototype.slice.call(caja.querySelectorAll('img'));
-  if (!imgs.length) return;
+// Carrusel y visor, sin dependencias.
+//
+// En la tarjeta la imagen va recortada (object-fit: cover) porque la columna
+// es mas baja que una captura; el visor la ensena entera (contain). De ahi que
+// se pueda pulsar: el recorte es para ojear, el visor para mirar.
+(function () {
+  var visor = null;
+  var grupo = [];      // imagenes del carrusel abierto
+  var idx = 0;
+  var devolverFoco = null;
 
-  var pie = document.createElement('div');
-  pie.className = 'pie';
-  caja.appendChild(pie);
+  function crearVisor() {
+    visor = document.createElement('div');
+    visor.className = 'visor';
+    visor.setAttribute('role', 'dialog');
+    visor.setAttribute('aria-modal', 'true');
+    visor.setAttribute('aria-label', 'Imagen a pantalla completa');
 
-  var puntos = null;
-  var i = 0;
+    var img = document.createElement('img');
+    img.alt = '';
 
-  function mostrar(n) {
-    i = (n + imgs.length) % imgs.length;
-    imgs.forEach(function (im, k) { im.classList.toggle('activa', k === i); });
-    pie.textContent = imgs[i].dataset.pie || '';
-    if (puntos) {
-      Array.prototype.forEach.call(puntos.children, function (b, k) {
-        b.classList.toggle('activo', k === i);
-        b.setAttribute('aria-current', k === i ? 'true' : 'false');
-      });
-    }
-    // Adelanta la carga de la siguiente para que el salto no parpadee.
-    var sig = imgs[(i + 1) % imgs.length];
-    if (sig && sig.loading === 'lazy') { sig.loading = 'eager'; }
-  }
+    var cerrar = document.createElement('button');
+    cerrar.type = 'button';
+    cerrar.className = 'cerrar';
+    cerrar.setAttribute('aria-label', 'Cerrar');
+    cerrar.innerHTML = '&times;';
+    cerrar.addEventListener('click', cerrarVisor);
 
-  if (imgs.length > 1) {
     var atras = document.createElement('button');
     atras.type = 'button';
     atras.className = 'flecha atras';
     atras.setAttribute('aria-label', 'Imagen anterior');
     atras.innerHTML = '&lsaquo;';
-    atras.addEventListener('click', function () { mostrar(i - 1); });
+    atras.addEventListener('click', function (e) { e.stopPropagation(); ir(idx - 1); });
 
     var delante = document.createElement('button');
     delante.type = 'button';
     delante.className = 'flecha delante';
     delante.setAttribute('aria-label', 'Imagen siguiente');
     delante.innerHTML = '&rsaquo;';
-    delante.addEventListener('click', function () { mostrar(i + 1); });
+    delante.addEventListener('click', function (e) { e.stopPropagation(); ir(idx + 1); });
 
-    puntos = document.createElement('div');
-    puntos.className = 'puntos';
-    imgs.forEach(function (im, k) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Ir a la imagen ' + (k + 1) + ' de ' + imgs.length);
-      b.addEventListener('click', function () { mostrar(k); });
-      puntos.appendChild(b);
-    });
+    var rot = document.createElement('div');
+    rot.className = 'rotulo-visor';
 
-    caja.appendChild(atras);
-    caja.appendChild(delante);
-    caja.appendChild(puntos);
+    visor.appendChild(img);
+    visor.appendChild(cerrar);
+    visor.appendChild(atras);
+    visor.appendChild(delante);
+    visor.appendChild(rot);
+    document.body.appendChild(visor);
 
-    caja.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') { mostrar(i - 1); e.preventDefault(); }
-      if (e.key === 'ArrowRight') { mostrar(i + 1); e.preventDefault(); }
-    });
+    // Pulsar el fondo cierra; pulsar la imagen, no.
+    visor.addEventListener('click', function (e) { if (e.target === visor) cerrarVisor(); });
+    img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+    visor._img = img;
+    visor._rot = rot;
+    visor._atras = atras;
+    visor._delante = delante;
   }
 
-  mostrar(0);
-});
+  function ir(n) {
+    if (!grupo.length) return;
+    idx = (n + grupo.length) % grupo.length;
+    var orig = grupo[idx];
+    visor._img.src = orig.src;
+    visor._img.alt = orig.alt || '';
+    var pie = orig.dataset.pie || '';
+    visor._rot.innerHTML = '';
+    if (pie) {
+      var b = document.createElement('b');
+      b.textContent = pie;
+      visor._rot.appendChild(b);
+    }
+    var cuenta = document.createElement('span');
+    cuenta.textContent = (idx + 1) + ' de ' + grupo.length;
+    visor._rot.appendChild(cuenta);
+    var varias = grupo.length > 1;
+    visor._atras.hidden = !varias;
+    visor._delante.hidden = !varias;
+  }
+
+  function abrirVisor(imgs, desde, foco) {
+    if (!visor) crearVisor();
+    grupo = imgs;
+    devolverFoco = foco || null;
+    ir(desde);
+    visor.classList.add('abierto');
+    document.body.classList.add('con-visor');
+    visor.querySelector('.cerrar').focus();
+  }
+
+  function cerrarVisor() {
+    if (!visor) return;
+    visor.classList.remove('abierto');
+    document.body.classList.remove('con-visor');
+    if (devolverFoco && devolverFoco.focus) devolverFoco.focus();
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (!visor || !visor.classList.contains('abierto')) return;
+    if (e.key === 'Escape') { cerrarVisor(); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { ir(idx - 1); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { ir(idx + 1); e.preventDefault(); }
+  });
+
+  // ---------- los carruseles de las tarjetas ----------
+  document.querySelectorAll('[data-carrusel]').forEach(function (caja) {
+    var imgs = Array.prototype.slice.call(caja.querySelectorAll('img'));
+    if (!imgs.length) return;
+
+    var pie = document.createElement('div');
+    pie.className = 'pie';
+    caja.appendChild(pie);
+
+    var lupa = document.createElement('button');
+    lupa.type = 'button';
+    lupa.className = 'lupa';
+    lupa.textContent = 'Ver entera';
+    lupa.setAttribute('aria-label', 'Ver la imagen entera');
+    caja.appendChild(lupa);
+
+    var puntos = null;
+    var i = 0;
+
+    function mostrar(n) {
+      i = (n + imgs.length) % imgs.length;
+      imgs.forEach(function (im, k) { im.classList.toggle('activa', k === i); });
+      pie.textContent = imgs[i].dataset.pie || '';
+      if (puntos) {
+        Array.prototype.forEach.call(puntos.children, function (b, k) {
+          b.classList.toggle('activo', k === i);
+          b.setAttribute('aria-current', k === i ? 'true' : 'false');
+        });
+      }
+      var sig = imgs[(i + 1) % imgs.length];
+      if (sig && sig.loading === 'lazy') { sig.loading = 'eager'; }
+    }
+
+    lupa.addEventListener('click', function () { abrirVisor(imgs, i, lupa); });
+    imgs.forEach(function (im, k) {
+      im.addEventListener('click', function () { abrirVisor(imgs, k, lupa); });
+    });
+
+    if (imgs.length > 1) {
+      var atras = document.createElement('button');
+      atras.type = 'button';
+      atras.className = 'flecha atras';
+      atras.setAttribute('aria-label', 'Imagen anterior');
+      atras.innerHTML = '&lsaquo;';
+      atras.addEventListener('click', function () { mostrar(i - 1); });
+
+      var delante = document.createElement('button');
+      delante.type = 'button';
+      delante.className = 'flecha delante';
+      delante.setAttribute('aria-label', 'Imagen siguiente');
+      delante.innerHTML = '&rsaquo;';
+      delante.addEventListener('click', function () { mostrar(i + 1); });
+
+      puntos = document.createElement('div');
+      puntos.className = 'puntos';
+      imgs.forEach(function (im, k) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Ir a la imagen ' + (k + 1) + ' de ' + imgs.length);
+        b.addEventListener('click', function () { mostrar(k); });
+        puntos.appendChild(b);
+      });
+
+      caja.appendChild(atras);
+      caja.appendChild(delante);
+      caja.appendChild(puntos);
+
+      caja.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { mostrar(i - 1); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { mostrar(i + 1); e.preventDefault(); }
+      });
+    }
+
+    mostrar(0);
+  });
+})();
 </script>
 
 </body>
