@@ -1,0 +1,7 @@
+# Sistema
+Thumbs.db
+.DS_Store
+
+# Ajustes locales de la maquina.
+.claude/settings.local.json
+.claude/worktrees/
