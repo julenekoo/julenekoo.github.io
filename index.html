@@ -78,10 +78,47 @@
   }
   .proy.solo{grid-template-columns:1fr}
   .proy .txt{padding:32px}
-  .proy .shot{background:#07090c; border-left:1px solid var(--linea); display:flex; flex-direction:column}
-  .proy .shot img{width:100%; height:100%; max-width:100%; object-fit:cover; object-position:top left; display:block; min-height:230px}
-  .proy .shot.duo{display:grid; grid-template-rows:1fr 1fr; gap:1px; background:var(--linea)}
-  .proy .shot.duo img{min-height:0}
+  .proy .shot{
+    position:relative; background:#07090c; border-left:1px solid var(--linea);
+    min-height:300px; overflow:hidden;
+  }
+  .proy .shot img{
+    position:absolute; inset:0; width:100%; height:100%; max-width:100%;
+    object-fit:cover; object-position:center; display:block;
+    opacity:0; transition:opacity .35s ease;
+  }
+  .proy .shot img.activa{opacity:1}
+
+  /* Flechas y puntos: solo aparecen si hay mas de una imagen. */
+  .shot .flecha{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:38px; height:38px; border-radius:50%; cursor:pointer;
+    border:1px solid rgba(255,255,255,.22); background:rgba(10,13,18,.72);
+    color:#fff; font-size:1.2rem; line-height:1; padding:0;
+    display:grid; place-items:center; backdrop-filter:blur(3px);
+    opacity:0; transition:opacity .2s, background .2s;
+  }
+  .shot:hover .flecha, .shot:focus-within .flecha{opacity:1}
+  .shot .flecha:hover{background:rgba(224,164,88,.9); color:#17120a; border-color:transparent}
+  .shot .flecha.atras{left:12px}
+  .shot .flecha.delante{right:12px}
+  .shot .puntos{
+    position:absolute; bottom:12px; left:0; right:0; z-index:2;
+    display:flex; gap:7px; justify-content:center;
+  }
+  .shot .puntos button{
+    width:7px; height:7px; padding:0; border-radius:50%; cursor:pointer;
+    border:0; background:rgba(255,255,255,.35); transition:background .2s, transform .2s;
+  }
+  .shot .puntos button.activo{background:var(--acento); transform:scale(1.35)}
+  .shot .pie{
+    position:absolute; left:0; right:0; bottom:0; z-index:1;
+    padding:34px 16px 30px; font-size:.8rem; color:#e8ebf0;
+    background:linear-gradient(transparent, rgba(7,9,12,.88));
+    opacity:0; transition:opacity .25s; pointer-events:none;
+  }
+  .shot:hover .pie{opacity:1}
+  @media (hover:none){ .shot .flecha{opacity:1} .shot .pie{opacity:1} }
   .proy h3{font-size:1.3rem}
   .proy .pitch{color:var(--suave); margin:13px 0 0; font-size:.97rem}
   .proy .pitch strong{color:var(--texto); font-weight:600}
@@ -135,7 +172,7 @@
 
 <header>
   <div class="env">
-    <div class="rotulo">Desarrollo de juegos y web</div>
+    <div class="rotulo">Desarrollo por iniciativa propia</div>
     <h1>Once proyectos, y el estado real de cada uno por escrito.</h1>
     <p class="entradilla">
       Siete juegos en Godot 4 y cuatro proyectos web, <strong>escritos con
@@ -299,9 +336,11 @@
             <span>Godot 4.7</span>
           </div>
         </div>
-        <div class="shot duo">
-          <img src="img/vetaserena-galeria.png" alt="Galeria de la mina por dentro: roca de pocos poligonos iluminada por dos faroles, una veta blanca en la pared y el pico en primera persona">
-          <img src="img/vetaserena-patio.png" alt="El patio al aire libre: la boca de la mina, robles, la chimenea del taller humeando y pilas de tablones, todo generado por codigo">
+        <div class="shot" data-carrusel>
+          <img src="img/veta-1-galeria.png" alt="Galeria de la mina por dentro: roca de pocos poligonos iluminada por dos faroles, una veta blanca en la pared y el pico en primera persona" data-pie="La galeria por dentro. Dos faroles, una veta en la pared, y ni una textura: la roca es malla generada con oclusion por vertice.">
+          <img src="img/veta-2-patio.png" loading="lazy" alt="El patio al aire libre: la boca de la mina, robles, la chimenea del taller humeando y pilas de tablones" data-pie="El patio de punta a punta: la boca, la escombrera, las pilas de tablones y la chimenea del taller humeando.">
+          <img src="img/veta-3-taller.png" loading="lazy" alt="La fachada del taller excavada en un monticulo, entre robles y con niebla al fondo" data-pie="La fachada del taller, excavada en un monticulo a diez metros de la boca, con la arboleda a los lados.">
+          <img src="img/veta-4-fundicion.png" loading="lazy" alt="Interior del taller: el tablon de encargos, la fundicion encendida y la puerta abierta al patio" data-pie="Dentro del taller: el tablon de ENCARGOS, la fundicion encendida y el mostrador. La fase de economia, que existe y todavia no tiene puerta.">
         </div>
       </article>
 
@@ -332,8 +371,10 @@
             <span>Godot 4.7</span>
           </div>
         </div>
-        <div class="shot">
-          <img src="img/millions-evoluciones.png" alt="Arbol de evoluciones de We Need Millions: una constelacion con seis ramas de colores, treinta y nueve estrellas y las lineas que las conectan">
+        <div class="shot" data-carrusel>
+          <img src="img/millions-1-campamento.png" alt="El campamento con cientos de goblins, la lista de mejoras del gremio y el boton de invocar" data-pie="El campamento con la horda llena. Es el fotograma que bajo de unos 40 ms a 22 en la pasada de rendimiento.">
+          <img src="img/millions-2-asalto.png" loading="lazy" alt="Asalto a una ciudad: la horda cruzando, tres anillos de muralla con arqueros, fuegos y globos" data-pie="El asalto: tres anillos de muralla, arqueros por anillo y las bajas contadas abajo en rojo.">
+          <img src="img/millions-3-evoluciones.png" loading="lazy" alt="Arbol de evoluciones: una constelacion con seis ramas de colores y treinta y nueve estrellas" data-pie="El arbol de evoluciones: seis ramas y treinta y nueve estrellas. El banco de pruebas lo juega entero y pone precio a cada una.">
         </div>
       </article>
 
@@ -365,8 +406,9 @@
             <span>Godot 4</span>
           </div>
         </div>
-        <div class="shot">
-          <img src="img/hungerborn-portada.jpg" alt="Portada de HungerBorn: la puerta de una mazmorra iluminada por antorchas, con ojos rojos en la oscuridad y cuatro aventureros de espaldas">
+        <div class="shot" data-carrusel>
+          <img src="img/hungerborn-1-portada.jpg" alt="Portada de HungerBorn: la puerta de una mazmorra iluminada por antorchas, con ojos rojos en la oscuridad y cuatro aventureros de espaldas" data-pie="La portada. Arte del proyecto, generado con IA a partir de prompts propios.">
+          <img src="img/hungerborn-2-pisos.jpg" loading="lazy" alt="Corte vertical de la mazmorra: cinco pisos apilados con escaleras, antorchas y salas" data-pie="El corte de la mazmorra: los pisos que se bajan uno detras de otro.">
         </div>
       </article>
 
@@ -396,9 +438,10 @@
             <span>Godot 4</span>
           </div>
         </div>
-        <div class="shot duo">
-          <img src="img/static-maleta.png" alt="La maleta: una rejilla con edificios colocados como piezas de puzle y el panel de recursos de la noche a la derecha">
-          <img src="img/static-mapa.png" alt="Pantalla de viaje: tres destinos con su coste en leguas, energia y comida, y una linea de tiempo con la niebla avanzando">
+        <div class="shot" data-carrusel>
+          <img src="img/maleta-1-maleta.png" alt="La maleta: una rejilla con edificios colocados como piezas de puzle y el panel de recursos de la noche" data-pie="La maleta. Cada edificio es un poliomino y el panel resuelve la noche entera antes de que confirmes.">
+          <img src="img/maleta-2-mapa.png" loading="lazy" alt="Pantalla de viaje: tres destinos con su coste en leguas, energia y comida, y la niebla avanzando" data-pie="El viaje: tres destinos, lo que cuesta cada uno, y la niebla que avanza tres leguas viajes o no.">
+          <img src="img/maleta-3-encuentro.png" loading="lazy" alt="Un encuentro con su texto y tres opciones, cada una con su coste y lo que compromete" data-pie="Un encuentro de los cuarenta. Cada opcion dice lo que cuesta y lo que promete antes de pulsarla.">
         </div>
       </article>
 
@@ -428,9 +471,10 @@
             <span>Godot 4</span>
           </div>
         </div>
-        <div class="shot duo">
-          <img src="img/mazmorra-expedicion.png" alt="Expedicion en curso: el tablero con la ruta del ladron trazada en azul y un panel que explica a que cofre va y por que">
-          <img src="img/mazmorra-construccion.png" alt="Fase de construccion: el tablero de la mazmorra con la tienda de mecanismos y sus precios a la izquierda">
+        <div class="shot" data-carrusel>
+          <img src="img/mazmorra-1-construccion.png" alt="Fase de construccion: el tablero con la tienda de mecanismos y sus precios a la izquierda" data-pie="La fase de construccion: seis mecanismos, sus precios, y las paredes que quedan libres.">
+          <img src="img/mazmorra-2-ruta.png" loading="lazy" alt="La ruta del ladron trazada sobre el tablero, con un panel que explica a que cofre va y por que" data-pie="La ruta del ladron, y el panel explicando su decision: va a los cofres senuelo antes que al tesoro.">
+          <img src="img/mazmorra-3-expedicion.png" loading="lazy" alt="Expedicion en curso con la ficha del ladron, su vida, velocidad y recompensa en el panel de detalle" data-pie="Expedicion en marcha. No controlas a nadie: solo has disenado el sitio.">
         </div>
       </article>
 
@@ -465,8 +509,9 @@
             <span>Godot 4.7</span>
           </div>
         </div>
-        <div class="shot">
-          <img src="img/door-mesa.png" alt="La mesa de una bajada: dos puertas dibujadas a mano sobre papel cuadriculado bajo el rotulo ¿CUAL ABRES?, con la pista de cada una, los corazones de vida y la mano de cartas abajo">
+        <div class="shot" data-carrusel>
+          <img src="img/door-1-rellano.png" alt="El rellano: el rotulo del juego, una puerta dibujada a mano, el cuaderno, los desafios y el contador de bajadas" data-pie="El rellano, con el contador de la meta: has bajado 15 veces y has llegado al fondo 6.">
+          <img src="img/door-2-mesa.png" loading="lazy" alt="La mesa de una bajada: dos puertas sobre papel cuadriculado bajo el rotulo que pregunta cual abres" data-pie="El bucle entero: dos puertas, una pista en cada una, y la mano de cartas abajo. Un gesto y nada mas.">
         </div>
       </article>
 
@@ -496,8 +541,8 @@
             <span>Godot 4</span>
           </div>
         </div>
-        <div class="shot">
-          <img src="img/covetborn-mapa.png" alt="El mapa del mundo generado por procedimiento: un rio cruzando praderas y bosques, roca, una mazmorra, la barra de recursos arriba y el Consejero hablando en un bocadillo">
+        <div class="shot" data-carrusel>
+          <img src="img/covetborn-1-mapa.png" alt="El mapa del mundo generado por procedimiento, con la barra de recursos arriba y el Consejero hablando en un bocadillo" data-pie="El mundo generado por procedimiento, y el Consejero hablando: la unica ventana del jugador al mundo.">
         </div>
       </article>
 
@@ -577,10 +622,78 @@
 
 <footer>
   <div class="env">
-    Hecho con HTML y CSS a pelo, sin dependencias · Las cifras de este sitio están
-    medidas sobre el código, no estimadas.
+    Hecho con HTML, CSS y JavaScript a pelo, sin dependencias · Las cifras de este
+    sitio están medidas sobre el código, no estimadas.
   </div>
 </footer>
+
+<script>
+// Carrusel minimo, sin dependencias. Un bloque con una sola imagen no pinta
+// controles: no hay nada entre lo que pasar.
+document.querySelectorAll('[data-carrusel]').forEach(function (caja) {
+  var imgs = Array.prototype.slice.call(caja.querySelectorAll('img'));
+  if (!imgs.length) return;
+
+  var pie = document.createElement('div');
+  pie.className = 'pie';
+  caja.appendChild(pie);
+
+  var puntos = null;
+  var i = 0;
+
+  function mostrar(n) {
+    i = (n + imgs.length) % imgs.length;
+    imgs.forEach(function (im, k) { im.classList.toggle('activa', k === i); });
+    pie.textContent = imgs[i].dataset.pie || '';
+    if (puntos) {
+      Array.prototype.forEach.call(puntos.children, function (b, k) {
+        b.classList.toggle('activo', k === i);
+        b.setAttribute('aria-current', k === i ? 'true' : 'false');
+      });
+    }
+    // Adelanta la carga de la siguiente para que el salto no parpadee.
+    var sig = imgs[(i + 1) % imgs.length];
+    if (sig && sig.loading === 'lazy') { sig.loading = 'eager'; }
+  }
+
+  if (imgs.length > 1) {
+    var atras = document.createElement('button');
+    atras.type = 'button';
+    atras.className = 'flecha atras';
+    atras.setAttribute('aria-label', 'Imagen anterior');
+    atras.innerHTML = '&lsaquo;';
+    atras.addEventListener('click', function () { mostrar(i - 1); });
+
+    var delante = document.createElement('button');
+    delante.type = 'button';
+    delante.className = 'flecha delante';
+    delante.setAttribute('aria-label', 'Imagen siguiente');
+    delante.innerHTML = '&rsaquo;';
+    delante.addEventListener('click', function () { mostrar(i + 1); });
+
+    puntos = document.createElement('div');
+    puntos.className = 'puntos';
+    imgs.forEach(function (im, k) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Ir a la imagen ' + (k + 1) + ' de ' + imgs.length);
+      b.addEventListener('click', function () { mostrar(k); });
+      puntos.appendChild(b);
+    });
+
+    caja.appendChild(atras);
+    caja.appendChild(delante);
+    caja.appendChild(puntos);
+
+    caja.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { mostrar(i - 1); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { mostrar(i + 1); e.preventDefault(); }
+    });
+  }
+
+  mostrar(0);
+});
+</script>
 
 </body>
 </html>
