@@ -87,13 +87,18 @@
   .proy{
     background:var(--fondo2); border:1px solid var(--linea);
     border-radius:var(--radio); overflow:hidden;
-    display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    display:flex; flex-direction:column;
   }
-  .proy.solo{grid-template-columns:1fr}
-  .proy .txt{padding:32px}
+  .proy .txt{padding:28px 32px 32px; max-width:840px}
+  /* La imagen va ENCIMA y a todo el ancho, y la caja tiene la proporcion de
+     sus capturas. Antes se estiraba hasta la altura del texto de al lado,
+     quedaba casi cuadrada, y una captura apaisada perdia hasta la mitad del
+     ancho: medido a 1920 px, entre el 47 y el 79 % visible. Con la caja en la
+     proporcion de la imagen, cover no tiene nada que recortar.
+     16:9 por defecto; las que no lo son lo dicen en su propio bloque. */
   .proy .shot{
-    position:relative; background:#07090c; border-left:1px solid var(--linea);
-    min-height:340px; overflow:hidden;
+    position:relative; background:#07090c; border-bottom:1px solid var(--linea);
+    width:100%; max-width:100%; aspect-ratio:16/9; overflow:hidden; order:-1;
   }
   .proy .shot img{
     position:absolute; inset:0; width:100%; height:100%; max-width:100%;
@@ -101,8 +106,9 @@
     opacity:0; transition:opacity .35s ease; cursor:zoom-in;
   }
   .proy .shot img.activa{opacity:1}
-  /* Las capturas de web son paginas altas: se encuadran por arriba, que es
-     donde esta la cabecera y el reclamo, en vez de por el centro. */
+  /* Las capturas de web: 1280x860, y si algo sobrara, por arriba, que es donde
+     esta la cabecera y el reclamo de una pagina. */
+  .proy .shot.arriba{aspect-ratio:1280/860}
   .proy .shot.arriba img{object-position:top center}
 
   .shot .lupa{
@@ -219,9 +225,7 @@
   footer{padding:34px 0; color:var(--tenue); font-size:.85rem}
 
   @media (max-width:820px){
-    .proy{grid-template-columns:1fr}
-    .proy .shot{border-left:0; border-top:1px solid var(--linea); order:-1}
-    .proy .shot img{min-height:190px}
+    .proy .txt{padding:22px 20px 24px}
     header{padding:60px 0 48px}
     section{padding:56px 0}
     .cierre .caja{padding:26px}
@@ -466,7 +470,7 @@
             <span>Godot 4</span>
           </div>
         </div>
-        <div class="shot" data-carrusel>
+        <div class="shot" data-carrusel style="aspect-ratio:1536/1024">
           <img src="img/hungerborn-1-portada.jpg" class="activa" loading="lazy" alt="Portada de HungerBorn: la puerta de una mazmorra iluminada por antorchas, con ojos rojos en la oscuridad y cuatro aventureros de espaldas" data-pie="La portada. Arte del proyecto, generado con IA a partir de prompts propios.">
           <img src="img/hungerborn-2-pisos.jpg" loading="lazy" alt="Corte vertical de la mazmorra: cinco pisos apilados con escaleras, antorchas y salas" data-pie="El corte de la mazmorra: los pisos que se bajan uno detras de otro.">
         </div>
@@ -498,7 +502,7 @@
             <span>Godot 4</span>
           </div>
         </div>
-        <div class="shot" data-carrusel>
+        <div class="shot" data-carrusel style="aspect-ratio:1320/860">
           <img src="img/maleta-1-maleta.png" class="activa" loading="lazy" alt="La maleta: una rejilla con edificios colocados como piezas de puzle y el panel de recursos de la noche" data-pie="La maleta. Cada edificio es un poliomino y el panel resuelve la noche entera antes de que confirmes.">
           <img src="img/maleta-2-mapa.png" loading="lazy" alt="Pantalla de viaje: tres destinos con su coste en leguas, energia y comida, y la niebla avanzando" data-pie="El viaje: tres destinos, lo que cuesta cada uno, y la niebla que avanza tres leguas viajes o no.">
           <img src="img/maleta-3-encuentro.png" loading="lazy" alt="Un encuentro con su texto y tres opciones, cada una con su coste y lo que compromete" data-pie="Un encuentro de los cuarenta. Cada opcion dice lo que cuesta y lo que promete antes de pulsarla.">
@@ -531,7 +535,7 @@
             <span>Godot 4</span>
           </div>
         </div>
-        <div class="shot" data-carrusel>
+        <div class="shot" data-carrusel style="aspect-ratio:1280/800">
           <img src="img/mazmorra-1-construccion.png" class="activa" loading="lazy" alt="Fase de construccion: el tablero con la tienda de mecanismos y sus precios a la izquierda" data-pie="La fase de construccion: seis mecanismos, sus precios, y las paredes que quedan libres.">
           <img src="img/mazmorra-2-ruta.png" loading="lazy" alt="La ruta del ladron trazada sobre el tablero, con un panel que explica a que cofre va y por que" data-pie="La ruta del ladron, y el panel explicando su decision: va a los cofres senuelo antes que al tesoro.">
           <img src="img/mazmorra-3-expedicion.png" loading="lazy" alt="Expedicion en curso con la ficha del ladron, su vida, velocidad y recompensa en el panel de detalle" data-pie="Expedicion en marcha. No controlas a nadie: solo has disenado el sitio.">
