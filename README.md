@@ -1,9 +1,9 @@
 # Escaparate del portfolio
 
-La web publica que presenta los once proyectos. Se sirve con GitHub Pages en
+La web publica que presenta los diez proyectos. Se sirve con GitHub Pages en
 https://julenekoo.github.io
 
-**Este repositorio es el unico publico.** Los once repositorios de codigo son
+**Este repositorio es el unico publico.** Los diez repositorios de codigo son
 privados; aqui solo hay el HTML del escaparate, las capturas y los textos. Por
 eso Pages funciona sin plan de pago: Pages gratuito solo sirve repositorios
 publicos, asi que el escaparate vive aparte y el codigo se queda privado.
@@ -19,8 +19,8 @@ publicos, asi que el escaparate vive aparte y el codigo se queda privado.
 ## Las cifras
 
 Las cifras del escaparate estan medidas sobre el codigo, no estimadas:
-267.962 lineas de codigo, 3.895 comprobaciones automaticas y 429 commits de
-historial entre los once proyectos. Si cambian los proyectos, hay que volver a
+264.815 lineas de codigo, 3.836 comprobaciones automaticas y 427 commits de
+historial entre los diez proyectos. Si cambian los proyectos, hay que volver a
 medirlas antes de tocar el numero.
 
 ## Capturas
