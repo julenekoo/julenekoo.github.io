@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio de desarrollo · Juegos en Godot y proyectos web</title>
-<meta name="description" content="Portfolio de desarrollo: seis juegos en Godot 4 y cuatro proyectos web, escritos con IA y con la co-autoria declarada en 401 de 427 commits. 264.815 lineas de codigo, 3.836 comprobaciones automaticas (2.282 verificadas ejecutando los arneses), y el estado real de cada proyecto por escrito.">
+<meta name="description" content="Portfolio de desarrollo: seis juegos en Godot 4 y cuatro proyectos web, escritos con IA y con la co-autoria declarada en 444 de 470 commits. 376.071 lineas de codigo, 7.599 comprobaciones automaticas, y el estado real de cada proyecto por escrito.">
 
 <!-- Tarjeta de vista previa al pegar el enlace (InfoJobs, LinkedIn, correo, WhatsApp). -->
 <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Portfolio de juleneko">
 <meta property="og:locale" content="es_ES">
 <meta property="og:title" content="Diez proyectos, y el estado real de cada uno por escrito">
-<meta property="og:description" content="Seis juegos en Godot 4 y cuatro proyectos web, escritos con IA. 264.815 lineas de codigo y 3.836 comprobaciones automaticas, con lo que falta de cada proyecto dicho sin adornos.">
+<meta property="og:description" content="Seis juegos en Godot 4 y cuatro proyectos web, escritos con IA. 376.071 lineas de codigo y 7.599 comprobaciones automaticas, con lo que falta de cada proyecto dicho sin adornos.">
 <meta property="og:image" content="https://julenekoo.github.io/img/veta-1-galeria.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
@@ -246,10 +246,10 @@
     </p>
 
     <div class="cifras">
-      <div class="cifra"><b>264.815</b><span>líneas de código</span></div>
-      <div class="cifra"><b>3.836</b><span>comprobaciones automáticas</span></div>
-      <div class="cifra"><b>427</b><span>commits de historial</span></div>
-      <div class="cifra"><b>401</b><span>con co-autoría de IA declarada</span></div>
+      <div class="cifra"><b>376.071</b><span>líneas de código</span></div>
+      <div class="cifra"><b>7.599</b><span>comprobaciones automáticas</span></div>
+      <div class="cifra"><b>470</b><span>commits de historial</span></div>
+      <div class="cifra"><b>444</b><span>con co-autoría de IA declarada</span></div>
     </div>
   </div>
 </header>
@@ -260,9 +260,10 @@
     <h2>Escritos con IA, y el historial lo dice desde el primer commit</h2>
     <p class="sub">
       El código de estos diez proyectos se ha escrito con IA, con Claude Code.
-      <strong>401 de los 427 commits llevan la co-autoría declarada en el propio
+      <strong>444 de los 470 commits llevan la co-autoría declarada en el propio
       mensaje</strong>, y en CovetBorn hay diez que tienen a la IA directamente
-      como autora. No está escondido y nunca lo ha estado: hay un
+      como autora. Los 26 que no la llevan son los más
+      viejos de Veta Serena, de antes de que la costumbre empezara. No está escondido y nunca lo ha estado: hay un
       <code>CLAUDE.md</code> en el repositorio de Veta Serena, y los documentos
       de estado de HungerBorn y We Need Millions están escritos como traspaso
       entre sesiones.
@@ -346,13 +347,17 @@
       <div class="regla">
         <h3>Las pruebas son red, no decoración</h3>
         <p>
-          3.836 comprobaciones que corren sin editor y sin render. Con matiz, porque
-          es lo honesto: <strong>tres de los seis juegos tienen arnés</strong> y
-          los otros tres no, y sus README lo dicen en la primera pantalla en vez de
-          esconderlo. De esas 3.836, <strong>2.282 están verificadas ejecutando el
-          arnés</strong> y 1.554 contadas sobre el código, en un proyecto cuyo
-          arnés no llegó a informar del resultado. La distinción importa y por eso
-          está escrita.
+          7.599 comprobaciones. Con matiz, porque es lo honesto: <strong>tres de los
+          seis juegos tienen arnés</strong> y los otros tres no, y sus README lo dicen
+          en la primera pantalla en vez de esconderlo. De esas 7.599, <strong>1.292
+          están verificadas ejecutando el arnés en la última medida de este sitio</strong>
+          y las otras 6.307 son la última batería ejecutada que cada proyecto deja
+          anotada y fechada en su repositorio. Ya no hay ninguna «contada sobre el
+          código»: el arnés que no informaba del resultado ahora imprime las
+          comprobaciones y los milisegundos de cada suite mientras corre, y eso
+          convirtió 1.554 recuentos en 3.815 resultados. Y uno de los tres arneses
+          <strong>no corre sin pantalla</strong>: cuatro de sus comprobaciones miran
+          nodos que sin render no existen, y eso está dicho en su repositorio.
         </p>
         <cite>«Verificar ejecutando, nunca por código de salida: un Parse Error sale con EXIT 0.»</cite>
       </div>
@@ -385,18 +390,30 @@
           <p class="pitch">
             La excavación no rompe celdas enteras: se lleva un bocado esférico de roca,
             con celdas de 25 cm, para que el ritmo sea de unos veintiocho golpes por
-            metro de galería. Incluye servidor y capa de red propios.
+            metro de galería. Incluye servidor autoritativo y capa de red propios.
+          </p>
+          <p class="pitch">
+            Su arnés dejó de ser un recuento: ahora imprime las comprobaciones y los
+            milisegundos de cada suite mientras corre, así que <strong>las 3.815 son una
+            batería ejecutada</strong> y comparar su salida con la anterior es lo que caza
+            las regresiones. De ahí salió lo más caro de la última tanda: seis millones y
+            medio de celdas reservadas y puestas a cero <em>en cada golpe</em> de pico, que
+            era una puerta de memoria disfrazada de puerta de tiempo.
           </p>
           <div class="estado">
-            <b>Prototipo avanzado.</b> Cinco fases completas, build de Windows que
-            arranca sin ventana, menú de opciones y créditos al día. El proyecto más
-            grande y, con diferencia, el más probado del lote.
+            <b>Prototipo avanzado, y con rumbo fechado: un juego completo para Steam</b>,
+            con economía interna. Las monedas y los minerales son del juego y no salen
+            de él: ni criptomonedas, ni conversión a dinero real, ni dependencia de
+            ningún servicio financiero. Y no hay reloj: nada crece por esperar. Las dos
+            decisiones cripto anteriores están marcadas como descartadas, y con ellas se
+            borró la capa de código que las servía. El proyecto más grande y, con
+            diferencia, el más probado del lote.
           </div>
           <div class="datos">
-            <span><b>79.986</b> líneas</span>
-            <span><b>1.554</b> comprobaciones</span>
-            <span><b>46</b> ficheros de prueba</span>
-            <span><b>196</b> commits</span>
+            <span><b>90.458</b> líneas</span>
+            <span><b>3.815</b> comprobaciones</span>
+            <span><b>47</b> suites de prueba</span>
+            <span><b>220</b> commits</span>
             <span>Godot 4.7</span>
           </div>
         </div>
@@ -412,11 +429,17 @@
         <div class="txt">
           <h3>We Need Millions</h3>
           <p class="pitch">
-            Clicker e idle de goblins. Un árbol de evoluciones de seis ramas y treinta
-            y nueve estrellas, un mundo repartido en diez biomas con paleta, clima y
-            defensas propias, progreso mientras no juegas, y diez efectos de sonido y
-            cuatro temas musicales <strong>sintetizados por script</strong>, sin un
-            solo fichero de audio.
+            Clicker de goblins. Un árbol de evoluciones de seis ramas y treinta y nueve
+            estrellas, un mundo repartido en diez biomas con paleta, clima y defensas
+            propias, tres partidas independientes, y diez efectos de sonido y cuatro
+            temas musicales <strong>sintetizados por script</strong>, sin un solo
+            fichero de audio.
+          </p>
+          <p class="pitch">
+            <strong>No tiene progreso mientras no juegas</strong>, y eso es una decisión
+            y no una carencia: el laboratorio que lo medía se quedó a medias y está en
+            pausa, con el código retirado guardado aparte y con su explicación para que
+            la decisión se pueda deshacer sobre lo que ya estaba medido.
           </p>
           <p class="pitch">
             Trae un banco de pruebas que juega el árbol entero y pone precio a cada
@@ -424,14 +447,16 @@
             con la horda llena baja de unos 40 ms a 22.
           </p>
           <div class="estado">
-            <b>Jugable y en desarrollo activo.</b> El documento de estado se reescribió
-            entero contra el código al detectar que iba sesenta y seis commits por
-            detrás y citaba cifras que ya no existían.
+            <b>Jugable y camino a una beta.</b> Tres partidas, el asalto acabado, el modo
+            trono desatascado —existía y no era un modo, y se vio con un banco— y un
+            inventario de licencias y procedencia hecho para una posible venta. En el
+            repositorio están también las fotos y los CSV que cada medida cita, porque
+            si no las citas apuntarían a la nada.
           </div>
           <div class="datos">
-            <span><b>49.533</b> líneas</span>
-            <span><b>993</b> comprobaciones</span>
-            <span><b>105</b> commits</span>
+            <span><b>127.102</b> líneas</span>
+            <span><b>2.492</b> comprobaciones</span>
+            <span><b>110</b> commits</span>
             <span>Godot 4.7</span>
           </div>
         </div>
@@ -459,14 +484,19 @@
             de traducción no podía ver, y que salían en inglés en las doce versiones sin
             que nada fallara.
           </p>
-          <div class="estado">
-            <b>Jugable, con localización completa.</b> El proyecto estuvo meses sin
-            control de versiones y un documento de traspaso hacía de memoria. Hoy está
-            versionado, y ese documento se actualiza al cerrar cada tanda de trabajo.
+          <div class="estado aviso">
+            <b>Jugable, con localización completa y sin arnés de pruebas</b>, y su README
+            lo dice en la primera pantalla. El proyecto estuvo meses sin control de
+            versiones y un documento de traspaso hacía de memoria; hoy está versionado, y
+            ese documento llega a avisar por escrito de los huecos que tiene él mismo en
+            vez de disimularlos. La última tanda sacó del juego el último panel azul
+            violeta que quedaba —y era el primero que ve un jugador nuevo— y puso los
+            colores y los titulares de la casa en un solo sitio.
           </div>
           <div class="datos">
-            <span><b>49.346</b> líneas</span>
+            <span><b>63.931</b> líneas</span>
             <span><b>12</b> idiomas</span>
+            <span><b>22</b> commits</span>
             <span>Godot 4</span>
           </div>
         </div>
@@ -492,12 +522,20 @@
             siguiente.
           </p>
           <div class="estado aviso">
-            <b>Jugable de principio a fin y medido.</b> Falta el arte, y falta probarlo
-            con gente: es lo único que el repositorio no puede afirmar.
+            <b>Jugable de principio a fin y medido, y con dos cosas abiertas dichas con
+            su cifra.</b> Las cuatro maletas se midieron por fin una a una, y no son
+            cuatro problemas de la misma dificultad como pedía el diseño: llegan al
+            refugio el 58 %, el 31 %, el 13 % y el 1 % de las partidas. Dos de ellas
+            estaban en el 2 % y el 0 %, y la causa no era ninguna cifra de equilibrio:
+            las dos empezaban sin taller, que es la puerta de los dos únicos escapes del
+            juego. Y hay <b>dos combinaciones que el juego ofrece y son injugables</b>,
+            clavadas con dos comprobaciones que llevan el porcentaje en el mensaje.
+            Falta el arte, y falta probarlo con gente.
           </div>
           <div class="datos">
-            <span><b>22.416</b> líneas</span>
-            <span><b>1.069</b> comprobaciones</span>
+            <span><b>22.554</b> líneas</span>
+            <span><b>1.292</b> comprobaciones</span>
+            <span><b>12</b> suites de prueba</span>
             <span><b>16</b> documentos de diseño</span>
             <span>Godot 4</span>
           </div>
@@ -525,17 +563,20 @@
             headless de Godot tarda segundos y usa el contenido bueno, así que tener el
             contenido en dos sitios solo garantizaba desincronizarlo.
           </p>
-          <div class="estado aviso">
-            <b>Jugable de principio a fin y exportado a Windows</b>, con integración de
-            Steam y la lista de defectos a cero: salió de una revisión adversarial
-            multi-agente que propuso 33 fallos, y los veintidós que quedaron sin
-            verificar se triaron a mano uno por uno. Lo único abierto es que
-            <b>nadie lo ha jugado con las manos todavía</b>: lo que se sabe viene de
-            bots, del banco de 500 partidas y de capturas.
+          <div class="estado">
+            <b>Jugable de principio a fin, exportado a Windows, Linux y Mac, y jugado con
+            las manos.</b> Tiene sala de espera y bajada en grupo por Steam, y la lista de
+            defectos a cero: salió de una revisión adversarial multi-agente que propuso 33
+            fallos, y los veintidós que quedaron sin verificar se triaron a mano uno por
+            uno. Lo que más ha cambiado el juego no es código: <b>una tarde con un amigo y
+            dos ordenadores</b> movió más cosas que cualquier banco, y desde entonces el
+            repositorio escribe que lo que diga una tarde jugando manda sobre los bots.
+            Para publicarlo falta el App ID de Steam de verdad: hoy va con el de pruebas.
           </div>
           <div class="datos">
-            <span><b>21.309</b> líneas</span>
+            <span><b>29.801</b> líneas</span>
             <span>banco de <b>500</b> partidas</span>
+            <span><b>3</b> plataformas</span>
             <span>contenido en JSON</span>
             <span>Godot 4.7</span>
           </div>
@@ -567,7 +608,7 @@
           </div>
           <div class="datos">
             <span><b>24.927</b> líneas</span>
-            <span><b>94</b> commits</span>
+            <span><b>96</b> commits</span>
             <span><b>18</b> documentos de diseño</span>
             <span>Godot 4</span>
           </div>
